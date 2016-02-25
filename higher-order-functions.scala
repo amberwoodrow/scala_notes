@@ -25,15 +25,37 @@ incrementer = 2
 val result2 = closure(10)
 println(result2) // should be(12)
 
+
+
 def addWithoutSyntaxSugar(x: Int) = {
   new Function1[Int, Int]() {
     def apply(y: Int): Int = x + y
   }
 }
-println(addWithoutSyntaxSugar(1).
-  isInstanceOf[Function1[Int,Int]]) // should be(true)
 
-println(addWithoutSyntaxSugar(2)(3)) // should be(5)
+def addWithSyntaxSugar(x: Int) = (y:Int) => x + y
 
-def fiveAdder = addWithoutSyntaxSugar(5)
+println(addWithSyntaxSugar(1).isInstanceOf[Function1[Int,Int]]) // should be(true)
+println(addWithSyntaxSugar(2)(3)) // should be(5)
+
+def fiveAdder = addWithSyntaxSugar(5)
 println(fiveAdder(5)) // should be(10)
+
+addWithSyntaxSugar(1).isInstanceOf[Function1[_, _]] // should be(true)
+
+
+
+def makeUpper(xs: List[String]) = xs map {_.toUpperCase}
+
+def makeWhatEverYouLike(xs: List[String], sideEffect: String => String) = {
+  xs map sideEffect
+}
+
+println(makeUpper(List("abc", "xyz", "123"))) // should be(List("ABC", "XYZ", "123"))
+
+println(makeWhatEverYouLike(List("ABC", "XYZ", "123"), {
+  x => x.toLowerCase
+})) //should be(List("abc", "xyz", "123"))
+
+//using it inline
+println(List("Scala", "Erlang", "Clojure") map {_.length}) // should be(List(5, 6, 7))
