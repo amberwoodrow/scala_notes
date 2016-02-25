@@ -1,4 +1,4 @@
-object HelloWorld {
+object Notes {
   def main(args: Array[String]): Unit = {
 
     println(sqrt(25))
