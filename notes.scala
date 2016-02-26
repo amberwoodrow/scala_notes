@@ -1,3 +1,10 @@
+// Arrays - mutable, same types
+// Lists - immutable, same types, represents a linked list
+// Sets - will not count the same value more then once, allows multiple types
+// Maps - will not count the same key more then once, allows multiple types ((k,v)) or (k -> v), immutable
+// Tuple - allows multiple types, immutable
+
+
 object Notes {
   def main(args: Array[String]): Unit = {
 
