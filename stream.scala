@@ -31,3 +31,12 @@ println(fibs.take(2)) // Stream(0, ?)
 
 
 println(((1 to 100).toStream)(3)) // returns 4
+
+
+def fibonacci(n:Integer) : Integer = {
+  if (n < 2) return n
+  def fibFrom(a: Int, b: Int): Stream[Int] = a #:: fibFrom(b, a + b)
+  val fibs = fibFrom(1, 1).take(n)
+  fibs(fibs.length-1) // another way to return
+}
+println(fibonacci(4))
