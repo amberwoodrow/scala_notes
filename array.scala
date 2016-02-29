@@ -6,3 +6,9 @@ def f(num: Int) : List[Int] = (1 to num).map(i => i).toList
 
 // sum of odds
 def f(arr:List[Int]):Int = arr.map((x) => if(x % 2 != 0) x else 0).sum
+
+// get length with out using length, size, or count
+def f(arr:List[Int]):Int = arr.indexOf(arr.last)+1
+
+// absoutle vals in arr
+def f(arr:List[Int]):List[Int] = arr.map(x => Math.abs(x))

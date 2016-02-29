@@ -13,4 +13,21 @@ def fizzbuzz() {
   println(fb(1).take(100).toList)
 }
 
-fizzbuzz()
+// fizzbuzz()
+
+
+val fibs: Stream[BigInt] = BigInt(0) #:: BigInt(1) #:: fibs.zip(fibs.tail).map{
+  n => {
+    // println(fibs.zip(fibs.tail)) // puts BigInt(0) and BigInt(1) together -- (0,1), ? -- every iteration
+    // println(n._1) // 0, 1, 1, 2
+    // println(n._2) // 1, 1, 2, 3
+    println(n._1 + n._2) // 1, 2, 3, 5
+    n._1 + n._2 // ._ tuple selector
+  }
+}
+
+println(fibs.take(6).toList) // List(0, 1, 1, 2, 3, 5)
+println(fibs.take(2)) // Stream(0, ?)
+
+
+println(((1 to 100).toStream)(3)) // returns 4
